@@ -13,7 +13,8 @@ class CarManager:
 
     def add_car(self):
         """adds a car to the game"""
-        random_chance = random.randint(1, 6)
+        random_chance = random.randint(1, 6)  # a car has a 1/6 chance of being generated per loop of the program so
+        # the screen doesn't get filled up with cars
         if random_chance == 1:
             new_car = Turtle("square")
             new_car.shapesize(stretch_wid=1, stretch_len=2)
@@ -24,11 +25,12 @@ class CarManager:
             self.all_cars.append(new_car)
 
     def move(self):
-        """The car moves across the screen"""
+        """The cars moves across the screen"""
         for car in self.all_cars:
             car.forward(self.speed)
 
     def next_level(self):
+        """The speed of the cars increases"""
         self.speed += MOVE_INCREMENT
 
 
