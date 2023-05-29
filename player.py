@@ -5,7 +5,7 @@ MOVE_DISTANCE = 10
 FINISH_LINE_Y = 280
 
 
-# LEVEL FINISH DETECTION
+# LEVEL FINISH DETECTION DONE
 # Detect when the turtle player has reached the top edge of the screen
 # (i.e., reached the FINISH_LINE_Y). When this happens, return the turtle
 # to the starting position and increase the speed of the cars.
@@ -13,7 +13,7 @@ FINISH_LINE_Y = 280
 # to increase the car speed. If you get stuck, check the video walkthrough
 # in Step 6.
 
-# PLAYER BEHAVIOUR:
+# PLAYER BEHAVIOUR: DONE
 # Create a turtle player that starts at the bottom of the screen
 # and listen for the "Up" keypress to move the turtle north.
 
@@ -21,7 +21,7 @@ class Player(Turtle):
     def __init__(self):
         super().__init__()
         self.penup()
-        self.goto(0, - 250)
+        self.goto(STARTING_POSITION)
         self.color("white")
         self.shape("turtle")
         self.setheading(90)
@@ -29,3 +29,7 @@ class Player(Turtle):
     def up(self):
         """The car moves forward"""
         self.forward(MOVE_DISTANCE)
+
+    def next_level(self):
+        self.goto(STARTING_POSITION)
+

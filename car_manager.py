@@ -6,7 +6,7 @@ STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
 
-# LEVEL FINISH DETECTION
+# LEVEL FINISH DETECTION done
 # Detect when the turtle player has reached the top edge of the screen
 # (i.e., reached the FINISH_LINE_Y). When this happens, return the turtle
 # to the starting position and increase the speed of the cars.
@@ -24,27 +24,27 @@ MOVE_INCREMENT = 10
 class CarManager:
     def __init__(self):
         self.cars = []
-        self.start_cars()
         self.speed = STARTING_MOVE_DISTANCE
 
-    def start_cars(self):
-        for i in range(20):
-            self.add_car()
-
     def add_car(self):
+        """adds a car to the game"""
         new_car = Turtle("square")
         new_car.shapesize(stretch_wid=1, stretch_len=2)
         new_car.penup()
         new_car.color(random.choice(COLORS))
-        new_car.setposition(x=random.randint(320, 350), y=random.randint(-250, 250))
+        new_car.setposition(x=random.randint(320, 400), y=random.randint(-250, 250))
         new_car.setheading(180)
-        new_car.forward(5)
         self.cars.append(new_car)
 
     def move(self):
+        """The car moves across the screen"""
         for car_num in range(len(self.cars) - 1, 0, -1):
-            self.cars[car_num].forward(20)
+            self.cars[car_num].forward(self.speed)
 
     def next_level(self):
-        for car in self.cars:
-            pass
+        for car_num in range(len(self.cars) - 1, 0, -1):
+            self.cars[car_num].hideturtle()
+
+        self.cars.clear()
+        self.speed += MOVE_INCREMENT
+
